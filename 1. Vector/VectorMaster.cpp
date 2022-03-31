@@ -1,4 +1,8 @@
-#include "VectorMaster.h"
+/*********************************************************
+* Файл: VectorMaster.h
+* Назначение: Инициализация методов класса 
+* 2022 SPBSTU Alexander Iliakhinsky
+********************************************************/
 
 #include "VectorMaster.h"
 
@@ -6,7 +10,7 @@ VectorMaster::VectorMaster() {
 
 }
 
-void VectorMaster::SortSquare(std::vector<int> &vect) {
+void VectorMaster::sortSquare(std::vector<int> &vect) {
     for (std::size_t i = 0; i < vect.size(); i++) {
         for (std::size_t j = 0; j < vect.size(); j++) {
             if (vect[i] < vect[j]) {
@@ -18,7 +22,7 @@ void VectorMaster::SortSquare(std::vector<int> &vect) {
     }
 }
 
-void VectorMaster::SortSquare(std::vector<int> &vect, bool mode) {
+void VectorMaster::sortSquare(std::vector<int> &vect, bool mode) {
     if (mode == true) {
             for (std::size_t i = 0; i < vect.size(); i++) {
         for (std::size_t j = 0; j < vect.size(); j++) {
