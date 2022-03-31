@@ -5,6 +5,8 @@
 ********************************************************/
 
 #include "VectorMaster.h"
+#include <algorithm>
+#include <ctime>
 
 VectorMaster::VectorMaster() {
 
@@ -80,4 +82,38 @@ void VectorMaster::sortAt(std::vector<int> &vect, bool mode) {
             }
         }
     }
+}
+
+void VectorMaster::insertSort(std::vector<int> &vect) {
+    int tmp;
+    for (std::vector<int>::iterator i = vect.begin() + 1, j; i != vect.end(); ++i)
+    {
+        tmp = *i;
+        for (j = i - 1; j >= vect.begin() && *j > tmp; --j)
+            *(j + 1) = *j;
+        *(j + 1) = tmp;
+    }
+}
+
+void VectorMaster::sort(std::vector<int> &vect) {
+    std::sort(vect.begin(), vect.end());
+}
+
+void VectorMaster::fillRandom(std::vector<double> &vect, int size) {
+  double doubleRandMax = RAND_MAX;
+  vect.clear();
+  srand(time(0)); // Рандомизация.
+  for (size_t i = 0; i < size; i++) {
+      vect.push_back((rand() / doubleRandMax) * 2 - 1);
+  }
+}
+
+void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const int min, const int max)
+{
+  vec.clear();
+  srand(time(0)); // Рандомизация.
+  for (size_t i = 0; i < count; i++)
+  {
+    vec.push_back(rand() % (max - min + 1) + min); // Случайные числа из отрезка [min; max].
+  }
 }

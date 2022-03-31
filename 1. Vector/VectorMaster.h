@@ -25,6 +25,15 @@ public:
 
     static void sortAt(std::vector<int> &vect, bool mode);
 
+    static void insertSort(std::vector<int> &vect);
+
+    static void sort(std::vector<int> &vect); 
+
+    static void fillRandom(std::vector<double> &vect, int size); 
+
+    static void fillVector(std::vector<int>& vec, const std::size_t count, const int min, const int max);
+
+
 };
 
 #endif
