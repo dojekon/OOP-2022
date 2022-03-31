@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
 
     std::string fileName = "input.txt";
     std::ifstream file(fileName);
-    size_t capacity = 1;
+    size_t capacity = 1; // 
     size_t size = 0;
     char* data = new char[capacity];
 
