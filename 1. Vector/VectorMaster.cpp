@@ -18,7 +18,6 @@ void VectorMaster::SortSquare(std::vector<int> &vect) {
     }
 }
 
-
 void VectorMaster::SortSquare(std::vector<int> &vect, bool mode) {
     if (mode == true) {
             for (std::size_t i = 0; i < vect.size(); i++) {
