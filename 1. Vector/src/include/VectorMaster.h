@@ -8,6 +8,7 @@
 #define VECTORMASTER_H
 
 #include <vector>
+#include <string>
 
 class VectorMaster
 {
@@ -28,11 +29,13 @@ public:
 
     static void sort(std::vector<int> &vect); 
 
+    static void sort(std::vector<double> &vect); 
+
     static void fillRandom(std::vector<double> &vect, int size);
 
     static void fillVector(std::vector<int>& vec, const std::size_t count, const int min, const int max);
 
-    static std::vector<char> readFromFile(std::vector<char> &vect);
+    static void readFromFile(std::vector<char> &vect, std::string fileName);
 
 };
 

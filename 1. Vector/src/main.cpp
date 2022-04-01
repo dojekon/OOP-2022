@@ -14,7 +14,6 @@ int main(int argc, char const *argv[])
     std::vector<int> mainVec; // Основной вектор
     VectorMaster::fillVector(mainVec, 10000, -100, 100); // Заполняем целыми случайными числами
 
-
     /*  Копируем основнйо вектор в дополнительные для чистоты эксперимента,
         при сравнивании времени выполнения сортировок                   */
     std::vector<int> sortSquareVec = mainVec;
@@ -52,11 +51,39 @@ int main(int argc, char const *argv[])
     auto sortTime = 
     std::chrono::duration_cast<std::chrono::milliseconds>(sortFinish - sortStart);
 
+    std::cout << "• Написание алгоритмов сортировки с различным вариациями доступа к элементам вектора" << std::endl << "На выполнение алгоримов затрачено:" << std::endl;
     // Вывод затраченного времени
     std::cout << "sortSquare: " << sortSquareTime.count() << " ms\n";
     std::cout << "sortAt: " << sortAtTime.count() << " ms\n";
     std::cout << "insertSort: " << insertSortTime.count() << " ms\n";
     std::cout << "sort: " << sortTime.count() << " ms\n";
-   
+
+    std::cout << std::endl << "• Чтение из файла в массив и копирование в вектор: " << std::endl;
+    std::vector<char> charVector;
+    VectorMaster::readFromFile(charVector, "../input/input.txt");
+    // Вывод содержимого
+    for (std::vector<char>::iterator it = charVector.begin() ; it!=charVector.end() ; ++it)
+        std::cout<<*it;
+    std::cout << std::endl;
+    
+    // TODO: Пятое задание
+
+    std::cout << std::endl << "• Функция заполнения вектора случайными числами от -1.0 до 1.0";
+
+    std::vector<double> doubleVec;
+    std::vector<int> sizeVec{5,10,25,50,100};
+
+    for (auto size : sizeVec) {
+         std::cout << std::endl;
+        std::cout << "Размер: " << size << std::endl;
+        VectorMaster::fillRandom(doubleVec, size);
+        VectorMaster::sort(doubleVec);
+        // Вывод содержимого
+        std::cout << std::endl;
+        for (std::vector<double>::iterator it = doubleVec.begin() ; it!=doubleVec.end() ; ++it)
+            std::cout<<*it<<" ";
+        std::cout << std::endl;
+    }
+
    return 0;
 }

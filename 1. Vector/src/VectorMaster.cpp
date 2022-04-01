@@ -101,6 +101,10 @@ void VectorMaster::sort(std::vector<int> &vect) {
     std::sort(vect.begin(), vect.end());
 }
 
+void VectorMaster::sort(std::vector<double> &vect) {
+    std::sort(vect.begin(), vect.end());
+}
+
 void VectorMaster::fillRandom(std::vector<double> &vect, int size) {
   double doubleRandMax = RAND_MAX;
   vect.clear();
@@ -110,35 +114,32 @@ void VectorMaster::fillRandom(std::vector<double> &vect, int size) {
   }
 }
 
-void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const int min, const int max)
-{
+void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const int min, const int max){
   vec.clear();
   srand(time(0)); // Рандомизация.
-  for (size_t i = 0; i < count; i++)
-  {
+  for (size_t i = 0; i < count; i++)  {
     vec.push_back(rand() % (max - min + 1) + min); // Случайные числа из отрезка [min; max].
   }
 }
 
-    std::vector<char> VectorMaster::readFromFile(std::vector<char> &vect) {
-        std::string fileName = "input.txt";
-        std::ifstream file(fileName);
-        size_t capacity = 1; // 
-        size_t size = 0;
-        char* data = new char[capacity];
+void VectorMaster::readFromFile(std::vector<char> &vect, std::string fileName) {
+    std::ifstream file(fileName);
+    size_t capacity = 1; 
+    size_t size = 0;
+    char* data = new char[capacity];
 
-        while (file) {
-            file.read(data + size, capacity - size);
-            size += file.gcount();
-            if (size == capacity) {
-                capacity *= 2;
-                char* temp = new char[capacity];
-                std::move(data, data + size, temp);
-                data = std::move(temp);
-            }
+    while (file) {
+        file.read(data + size, capacity - size);
+        size += file.gcount();
+        if (size == capacity) {
+            capacity *= 2;
+            char* temp = new char[capacity];
+            std::move(data, data + size, temp);
+            data = std::move(temp);
         }
+    }
 
-        file.close();
-        vect.clear();
-        return std::vector<char> (data, data + size);
-    } 
+    file.close();
+    vect.clear();
+    vect = std::vector<char> (data, data + size); // Копирование одной строчкой
+} 
