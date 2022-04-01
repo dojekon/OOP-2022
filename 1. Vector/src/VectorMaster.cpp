@@ -4,7 +4,7 @@
 * 2022 SPBSTU Alexander Iliakhinsky
 ********************************************************/
 
-#include "VectorMaster.h"
+#include "./include/VectorMaster.h"
 #include <algorithm>
 #include <string>
 #include <fstream>

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
-#include "VectorMaster.h"
+#include "./include/VectorMaster.h"
 
 int main(int argc, char const *argv[])
 {
