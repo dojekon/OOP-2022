@@ -6,6 +6,8 @@
 
 #include "VectorMaster.h"
 #include <algorithm>
+#include <string>
+#include <fstream>
 #include <ctime>
 
 VectorMaster::VectorMaster() {
@@ -117,3 +119,26 @@ void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const i
     vec.push_back(rand() % (max - min + 1) + min); // Случайные числа из отрезка [min; max].
   }
 }
+
+    std::vector<char> VectorMaster::readFromFile(std::vector<char> &vect) {
+        std::string fileName = "input.txt";
+        std::ifstream file(fileName);
+        size_t capacity = 1; // 
+        size_t size = 0;
+        char* data = new char[capacity];
+
+        while (file) {
+            file.read(data + size, capacity - size);
+            size += file.gcount();
+            if (size == capacity) {
+                capacity *= 2;
+                char* temp = new char[capacity];
+                std::move(data, data + size, temp);
+                data = std::move(temp);
+            }
+        }
+
+        file.close();
+        vect.clear();
+        return std::vector<char> (data, data + size);
+    } 
