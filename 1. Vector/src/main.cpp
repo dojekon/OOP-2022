@@ -64,15 +64,12 @@ int main(int argc, char const *argv[])
         std::cout<<*it;
     std::cout << std::endl;
     
-    // TODO: Пятое задание
     std::cout << std::endl << "• Пятое задание" << std::endl;
     std::vector<int> five;
     VectorMaster::readInputEdit(five);
     for (size_t i = 0; i < five.size(); i++)    {
         std::cout << five[i] << " "; 
     }
-    
-
 
     std::cout << std::endl << "• Функция заполнения вектора случайными числами от -1.0 до 1.0";
 
@@ -90,8 +87,6 @@ int main(int argc, char const *argv[])
             std::cout<<*it<<" ";
         std::cout << std::endl;
     }
-
-
 
    return 0;
 }

@@ -197,9 +197,9 @@ void VectorMaster::readFromFile(std::vector<char>& vect, std::string fileName) {
 } 
 
 /**
- * @brief 
+ * @brief Чтение из стандартного потока в вектор и проведение операций из задания над элементами
  * 
- * @param vect 
+ * @param vect Вектор цельночисленных элементов
  */
 void VectorMaster::readInputEdit(std::vector<int>& vect) {
     vect.clear();
