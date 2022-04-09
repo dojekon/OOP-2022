@@ -4,8 +4,6 @@
 * 2022 SPBSTU Alexander Iliakhinsky
 ********************************************************/
 
-#include <iostream>
-#include <vector>
 #include <chrono>
 #include "./include/VectorMaster.h"
 
@@ -14,7 +12,7 @@ int main(int argc, char const *argv[])
     std::vector<int> mainVec; // Основной вектор
     VectorMaster::fillVector(mainVec, 10000, -100, 100); // Заполняем целыми случайными числами
 
-    /*  Копируем основнйо вектор в дополнительные для чистоты эксперимента,
+    /*  Копируем основной вектор в дополнительные для чистоты эксперимента,
         при сравнивании времени выполнения сортировок                   */
     std::vector<int> sortSquareVec = mainVec;
     std::vector<int> sortAtVec = mainVec;
@@ -67,6 +65,14 @@ int main(int argc, char const *argv[])
     std::cout << std::endl;
     
     // TODO: Пятое задание
+    std::cout << std::endl << "• Пятое задание" << std::endl;
+    std::vector<int> five;
+    VectorMaster::readInputEdit(five);
+    for (size_t i = 0; i < five.size(); i++)    {
+        std::cout << five[i] << " "; 
+    }
+    
+
 
     std::cout << std::endl << "• Функция заполнения вектора случайными числами от -1.0 до 1.0";
 
@@ -84,6 +90,8 @@ int main(int argc, char const *argv[])
             std::cout<<*it<<" ";
         std::cout << std::endl;
     }
+
+
 
    return 0;
 }

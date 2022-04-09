@@ -9,6 +9,10 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <fstream>
 
 class VectorMaster
 {
@@ -34,6 +38,8 @@ public:
     static void fillRandom(std::vector<double> &vect, int size);
 
     static void fillVector(std::vector<int>& vec, const std::size_t count, const int min, const int max);
+
+    static void readInputEdit(std::vector<int>& vec);
 
     static void readFromFile(std::vector<char> &vect, std::string fileName);
 

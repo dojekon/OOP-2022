@@ -5,15 +5,16 @@
 ********************************************************/
 
 #include "./include/VectorMaster.h"
-#include <algorithm>
-#include <string>
-#include <fstream>
-#include <ctime>
+
 
 VectorMaster::VectorMaster() {
 
 }
 
+/**
+ * @brief  Пузырьковая сортировка с использованием доступа к элементам вектора оператором []
+ * @param vect Вектор цельночисленных элементов
+ */
 void VectorMaster::sortSquare(std::vector<int> &vect) {
     for (std::size_t i = 0; i < vect.size(); i++) {
         for (std::size_t j = 0; j < vect.size(); j++) {
@@ -26,6 +27,12 @@ void VectorMaster::sortSquare(std::vector<int> &vect) {
     }
 }
 
+/**
+ * @brief Пузырьковая сортировка с использованием доступа к элементам вектора оператором []
+ * 
+ * @param vect Вектор цельночисленных элементов
+ * @param mode Переключатель режима сортировки. True - ASC, False - DESC
+ */
 void VectorMaster::sortSquare(std::vector<int> &vect, bool mode) {
     if (mode == true) {
         for (std::size_t i = 0; i < vect.size(); i++) {
@@ -50,6 +57,11 @@ void VectorMaster::sortSquare(std::vector<int> &vect, bool mode) {
     } 
 }
 
+/**
+ * @brief Пузырьковая сортировка с использованием доступа к элементам вектора оператором at()
+ * 
+ * @param vect Вектор цельночисленных элементов
+ */
 void VectorMaster::sortAt(std::vector<int> &vect) {
     for (std::size_t i = 0; i < vect.size(); i++) {
         for (std::size_t j = 0; j < vect.size(); j++) {
@@ -62,6 +74,12 @@ void VectorMaster::sortAt(std::vector<int> &vect) {
     }
 }
 
+/**
+ * @brief Пузырьковая сортировка с использованием доступа к элементам вектора оператором at()
+ * 
+ * @param vect Вектор цельночисленных элементов
+ * @param mode Переключатель режима сортировки. True - ASC, False - DESC
+ */
 void VectorMaster::sortAt(std::vector<int> &vect, bool mode) {
     if (mode == true) {
         for (std::size_t i = 0; i < vect.size(); i++) {
@@ -86,10 +104,14 @@ void VectorMaster::sortAt(std::vector<int> &vect, bool mode) {
     }
 }
 
+/**
+ * @brief Сортировка вставками с использщованием доступа к элементам вектора при помощи итераторов
+ * 
+ * @param vect Вектор цельночисленных элементов
+ */
 void VectorMaster::insertSort(std::vector<int> &vect) {
     int tmp;
-    for (std::vector<int>::iterator i = vect.begin() + 1, j; i != vect.end(); ++i)
-    {
+    for (std::vector<int>::iterator i = vect.begin() + 1, j; i != vect.end(); ++i)    {
         tmp = *i;
         for (j = i - 1; j >= vect.begin() && *j > tmp; --j)
             *(j + 1) = *j;
@@ -97,14 +119,30 @@ void VectorMaster::insertSort(std::vector<int> &vect) {
     }
 }
 
+/**
+ * @brief Сортировка с помоцью STL метода Sort()
+ * 
+ * @param vect Вектор цельночисленных элементов
+ */
 void VectorMaster::sort(std::vector<int> &vect) {
     std::sort(vect.begin(), vect.end());
 }
 
+/**
+ * @brief Сортировка с помоцью STL метода Sort()
+ * 
+ * @param vect Вектор вещественных элементов двойной точности
+ */
 void VectorMaster::sort(std::vector<double> &vect) {
     std::sort(vect.begin(), vect.end());
 }
 
+/**
+ * @brief Заполнение вектора случайными числами в диапазоне от -0.1 до 1.0
+ * 
+ * @param vect Вектор вещественных элементов двойной точности
+ * @param size Размер вектора
+ */
 void VectorMaster::fillRandom(std::vector<double> &vect, int size) {
   double doubleRandMax = RAND_MAX;
   vect.clear();
@@ -114,6 +152,14 @@ void VectorMaster::fillRandom(std::vector<double> &vect, int size) {
   }
 }
 
+/**
+ * @brief Заполнение вектора целыми числами в заданном диапазоне
+ * 
+ * @param vec Вектор цельночисленных элементов
+ * @param count Размер вектора
+ * @param min Нижняя граница рандомайзера
+ * @param max Верхняя граница рандомайзера
+ */
 void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const int min, const int max){
   vec.clear();
   srand(time(0)); // Рандомизация.
@@ -122,7 +168,13 @@ void VectorMaster::fillVector(std::vector<int>& vec, const size_t count, const i
   }
 }
 
-void VectorMaster::readFromFile(std::vector<char> &vect, std::string fileName) {
+/**
+ * @brief Чтение из файла в массив и копирование в вектор
+ * 
+ * @param vect Вектор элементов символьного типа
+ * @param fileName Путь до файла
+ */
+void VectorMaster::readFromFile(std::vector<char>& vect, std::string fileName) {
     std::ifstream file(fileName);
     size_t capacity = 1; 
     size_t size = 0;
@@ -143,3 +195,33 @@ void VectorMaster::readFromFile(std::vector<char> &vect, std::string fileName) {
     vect.clear();
     vect = std::vector<char> (data, data + size); // Копирование одной строчкой
 } 
+
+/**
+ * @brief 
+ * 
+ * @param vect 
+ */
+void VectorMaster::readInputEdit(std::vector<int>& vect) {
+    vect.clear();
+    while (true) {
+        int input;
+        std::cin >> input;
+        if (input != 0) vect.push_back(input);
+        else break;
+    }
+    if (vect.back() == 1) {
+        for (std::vector<int> :: iterator it = vect.end() - 1; it >= vect.begin(); it--) { // по приколу с конца сделал 
+            if (*it % 2 == 0) {
+                vect.erase(it);
+            } 
+        }
+    } else if (vect.back() == 2) {
+        for (std::vector<int>::iterator i = vect.begin() + 1, j; i != vect.end(); ++i) {
+            if (*i % 3 == 0) {
+                vect.insert(i+1,1);
+                vect.insert(i+1,1);
+                vect.insert(i+1,1);
+            } 
+        }
+    }
+}
